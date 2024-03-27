@@ -73,13 +73,21 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        'default': dj_database_url.config(
-            default='postgresql://postgres:postgres@localhost:5432/mysite',
-            conn_max_age=600
-        )
+        # 'default': dj_database_url.config(
+        #     default='postgresql://postgres:postgres@localhost:5432/mysite',
+        #     conn_max_age=600
+        # )
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangocrud_aifo',  # Cambia 'mysite' por el nombre de tu base de datos
+        'USER': 'djangocrud_aifo_user',  # Cambia 'postgres' por el nombre de usuario de tu base de datos
+        'PASSWORD': 'jA51hU1u7adVrR9BLgfoAZuPWZg7Qmlw',  # Cambia 'postgres' por la contraseña de tu base de datos
+        'HOST': 'dpg-co1n91821fec73d3hstg-a',  # Cambia 'localhost' si tu base de datos está en un host diferente
+        'PORT': '5432',  # Cambia '5432' si el puerto de tu base de datos es diferente
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
